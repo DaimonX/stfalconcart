@@ -1,18 +1,7 @@
+<app-dish-form></app-dish-form>
 <div class="panel panel-default dishlist col-xs-12">
   <ul class="list-group">
-    <li class="list-group-item" *ngFor="let dish of dishes" (click)="addToCart(dish)">
-      <div class="row">
-        <div class="col-xs-8">
-          <h2>{{dish.name}}</h2>
-          <h4>{{dish.category}}</h4>
-        </div>
-        <!-- /.col-xs-8 -->
-        <div class="col-xs-4">
-          <span class="col-xs-4">${{dish.price}}</span>
-          <button type="button" class="btn btn-outline-primary pull-right col-xs-8">Add to cart</button>
-        </div>
-        <!-- /.col-xs-4 -->
-      </div>
-    </li>
+    <app-dish-item *ngFor="let dish of dishes; trackBy: dishId"
+    [dish]="dish"></app-dish-item>
   </ul>
 </div>

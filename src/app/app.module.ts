@@ -12,6 +12,8 @@ import { CartComponent } from './cart/cart.component';
 
 import {DishService} from './dish.service';
 import {CartService} from './cart.service';
+import { DishFormComponent } from './dish-form/dish-form.component';
+import { DishItemComponent } from './dish-item/dish-item.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import {CartService} from './cart.service';
     NavComponent,
     FooterComponent,
     ListComponent,
-    CartComponent
+    CartComponent,
+    DishFormComponent,
+    DishItemComponent
   ],
   imports: [
     BrowserModule,

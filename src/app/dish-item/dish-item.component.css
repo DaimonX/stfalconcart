@@ -1,0 +1,9 @@
+.dishlist {
+  margin-top: 20px;
+  padding: 2rem;
+}
+
+span, button {
+  line-height: 110px;
+  font-size: 20px;
+}

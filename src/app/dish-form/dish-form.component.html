@@ -1,0 +1,19 @@
+<form #f="ngForm" (ngSubmit)="onSubmit(f.value); f.reset();" novalidate class="col-xs-4 col-xs-offset-4 panel panel-body">
+  <div class="form-group">
+    <label for="dishName">Name</label>
+    <input class="form-control" type="text" id="dishName" placeholder="Name" name="name" ngModel>
+  </div>
+  <div class="form-group">
+    <label for="dishCategory">Category</label>
+    <input class="form-control" type="text" id="dishCategory" placeholder="Category" name="category" ngModel>
+  </div>
+  <div class="form-group">
+    <label for="dishPrice">Price</label>
+    <input class="form-control" type="number" id="dishPrice" placeholder="Price" name="price" ngModel>
+  </div>
+  <div class="form-group">
+    <label for="dishId">Id</label>
+    <input class="form-control" type="number" id="dishId" placeholder="Id" name="id" ngModel>
+  </div>
+  <button type="submit" class="btn btn-default">Add dish to list</button>
+</form>

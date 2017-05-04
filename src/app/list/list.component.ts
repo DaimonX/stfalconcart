@@ -10,16 +10,15 @@ import {Dish} from '../models/Dish.model';
 })
 export class ListComponent implements OnInit {
   dishes: Array<Dish>;
+
   constructor(private dishService: DishService, private cartService: CartService) {
   }
 
-  addToCart(dishObj: Dish) {
-    this.cartService.addDish(dishObj);
-    return false;
-  }
-
-
   ngOnInit() {
     this.dishes = this.dishService.getDishes();
+  }
+
+  dishId(index, dish): number {
+    return dish.id;
   }
 }

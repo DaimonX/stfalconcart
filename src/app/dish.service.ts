@@ -21,4 +21,15 @@ export class DishService {
     return this.dishesList;
   }
 
+  addDish(dish: Dish) {
+    this.dishesList.unshift(dish);
+  }
+
+  deleteDish(dish: Dish) {
+    let idx = this.dishesList.indexOf(dish);
+    if ( idx > -1) {
+      this.dishesList.splice(idx, 1);
+    }
+  }
+
 }

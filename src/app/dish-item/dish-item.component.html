@@ -1,0 +1,17 @@
+<li class="list-group-item">
+  <div class="row">
+    <div class="col-xs-6">
+      <h2>{{dish.name}}</h2>
+      <h4>{{dish.category}}</h4>
+    </div>
+    <div class="col-xs-2">
+      <span>${{dish.price}}</span>
+    </div>
+    <div class="col-xs-2">
+      <button type="button" (click)="addToCart(dish)" class="btn btn-outline-primary col-xs-12">Add to cart</button>
+    </div>
+    <div class="col-xs-2">
+      <button type="button" (click)="deleteDish(dish)" class="btn btn-outline-primary col-xs-12">Delete from list</button>
+    </div>
+  </div>
+</li>
