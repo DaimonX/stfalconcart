@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Dish} from "../models/Dish.model";
 import {DishService} from "../dish.service";
+import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 
 
 @Component({
@@ -10,8 +11,15 @@ import {DishService} from "../dish.service";
 })
 export class DishFormComponent implements OnInit {
   newDish: Dish;
+  dishFrom: FormGroup;
 
-  constructor(private dishService: DishService) {
+  constructor(private dishService: DishService, fBuilder: FormBuilder) {
+    this.dishFrom = fBuilder.group({
+      name: '',
+      category: [null, Validators.required],
+      price: [null, Validators.compose([Validators.required, this.priceValidator])],
+      id: [Math.random()]
+    });
   }
 
   ngOnInit() {
@@ -27,6 +35,12 @@ export class DishFormComponent implements OnInit {
     }
     this.dishService.addDish(this.newDish);
     return false;
+  }
+
+  priceValidator(control: FormControl): {[s: string]: boolean} {
+    if(control.value <= 0){
+      return {invalidPrice: true};
+    };
   }
 
 }

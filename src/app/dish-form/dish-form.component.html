@@ -1,19 +1,26 @@
-<form #f="ngForm" (ngSubmit)="onSubmit(f.value); f.reset();" novalidate class="col-xs-4 col-xs-offset-4 panel panel-body">
+<!--<form #f="ngForm" (ngSubmit)="onSubmit(f.value); f.reset();" novalidate class="col-xs-4 col-xs-offset-4 panel panel-body">-->
+<form [formGroup]="dishFrom" (ngSubmit)="onSubmit(dishFrom.value); dishFrom.reset();" novalidate class="col-xs-4 col-xs-offset-4 panel panel-body">
   <div class="form-group">
     <label for="dishName">Name</label>
-    <input class="form-control" type="text" id="dishName" placeholder="Name" name="name" ngModel>
+    <input class="form-control" type="text" id="dishName" placeholder="Name" name="name" [formControl]="dishFrom.controls['name']">
   </div>
-  <div class="form-group">
+
+  <div class="form-group" [ngClass]="{'has-error': !dishFrom.controls['category'].valid && dishFrom.controls['category'].touched}">
+  <!--<div class="form-group" [class.error]="!dishFrom.controls['category'].valid && dishFrom.controls['category'].touched">-->
     <label for="dishCategory">Category</label>
-    <input class="form-control" type="text" id="dishCategory" placeholder="Category" name="category" ngModel>
+    <input class="form-control" type="text" id="dishCategory" placeholder="Category" name="category" [formControl]="dishFrom.controls['category']">
+    <!--Error message-->
+    <span *ngIf="!dishFrom.controls['category'].valid && dishFrom.controls['category'].touched" class="help-block"><strong>Error!</strong> You should fill this field </span>
   </div>
-  <div class="form-group">
+
+  <div class="form-group" [ngClass]="{'has-error': !dishFrom.controls['price'].valid && dishFrom.controls['price'].touched}">
     <label for="dishPrice">Price</label>
-    <input class="form-control" type="number" id="dishPrice" placeholder="Price" name="price" ngModel>
+    <input class="form-control" type="number" id="dishPrice" placeholder="Price" name="price" [formControl]="dishFrom.controls['price']">
+    <span *ngIf="dishFrom.controls['price'].hasError('invalidPrice')  && dishFrom.controls['price'].touched" class="help-block"><strong>Error!</strong> price</span>
   </div>
   <div class="form-group">
     <label for="dishId">Id</label>
-    <input class="form-control" type="number" id="dishId" placeholder="Id" name="id" ngModel>
+    <input class="form-control" type="number" id="dishId" placeholder="Id" name="id" [formControl]="dishFrom.controls['id']">
   </div>
-  <button type="submit" class="btn btn-default">Add dish to list</button>
+  <button type="submit" class="btn btn-success pull-right" [disabled]="!dishFrom.valid">Add dish to list</button>
 </form>
